@@ -4,7 +4,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== 'production';
-console.log(process.env.NODE_ENV);
 
 module.exports = {
     entry: {
@@ -43,7 +42,7 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env)
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         })
     ],
     optimization: {
@@ -77,7 +76,7 @@ module.exports = {
             }
         }
     },
-    devtool: devMode ? 'eval-source-map' : null,
+    devtool: devMode ? 'eval-source-map' : 'none',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: false,
